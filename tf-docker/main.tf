@@ -134,7 +134,6 @@ resource "aws_security_group" "ec2_dk_ssh_ping" {
   }
 }
 
-
 resource "aws_instance" "ec2_docker_learning" {
   ami                    = data.aws_ami.amazon_linux.id
   instance_type          = "t2.micro"
