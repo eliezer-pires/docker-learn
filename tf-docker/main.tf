@@ -97,18 +97,45 @@ resource "aws_route_table_association" "public_subnet_association" {
   route_table_id = aws_route_table.public_rt.id
 }
 
+resource "aws_security_group" "ec2_webserver" {
+  name        = "ec2-webserver"
+  description = "Permite acesso via porta 80, HTTP"
+  vpc_id      = aws_vpc.vpc_docker_learn.id
+
+  # Regra para permitir porta 80 http
+  ingress {
+    description = "HTTP"
+    from_port   = 80
+    to_port     = 80
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+  # Regra para permitir saída para meu ip
+  egress {
+    description = "Saida Irrestrita"
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  tags = {
+    Name = "ec2-webserver"
+  }
+}
+
 resource "aws_security_group" "ec2_dk_ssh_ping" {
   name        = "ec2-dk-ssh-ping"
   description = "Permite SSH e ICMP para a instancia EC2"
   vpc_id      = aws_vpc.vpc_docker_learn.id # Usa a vpc criada anteriormente
 
-  # Regra para permitir SSH do meu IP (193.186.4.202/32)
+  # Regra para permitir SSH
   ingress {
     description = "SSH"
     from_port   = 22
     to_port     = 22
     protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"] # Permite SSH apenas do meu IP
+    cidr_blocks = ["0.0.0.0/0"]
   }
 
   # Regra para permitir ping (ICMP Echo Request)
@@ -140,6 +167,16 @@ resource "aws_instance" "ec2_docker_learning" {
   subnet_id              = aws_subnet.ec2_docker_subnet.id         # Especificando a subnet
   vpc_security_group_ids = [aws_security_group.ec2_dk_ssh_ping.id] # Associação com o SG
   key_name               = "ec2-docker-aws"                        # Nome do Key Pair criado na AWS
+
+  user_data = <<-EOF
+    #!/bin/bash
+    sudo dnf update -y
+    sudo dnf upgrade -y
+    sudo dnf install -y docker
+    sudo systemctl enable --now docker
+    sudo usermod -aG docker $USER
+    echo "Setup concluído!" > /home/ec2-user/setup_done.txt
+  EOF
 
   tags = {
     Name = "Ec2-Docker-learning-fedora"
