@@ -162,21 +162,22 @@ resource "aws_security_group" "ec2_dk_ssh_ping" {
 }
 
 resource "aws_instance" "ec2_docker_learning" {
-  ami                    = data.aws_ami.amazon_linux.id
-  instance_type          = "t2.micro"
-  subnet_id              = aws_subnet.ec2_docker_subnet.id         # Especificando a subnet
-  vpc_security_group_ids = [aws_security_group.ec2_dk_ssh_ping.id] # Associação com o SG
-  key_name               = "ec2-docker-aws"                        # Nome do Key Pair criado na AWS
+  ami                         = data.aws_ami.amazon_linux.id
+  instance_type               = "t2.micro"
+  subnet_id                   = aws_subnet.ec2_docker_subnet.id         # Especificando a subnet
+  vpc_security_group_ids      = [aws_security_group.ec2_dk_ssh_ping.id] # Associação com o SG
+  key_name                    = "ec2-docker-aws"
+  associate_public_ip_address = true # Nome do Key Pair criado na AWS
 
   user_data = <<-EOF
     #!/bin/bash
-    sudo dnf update -y
-    sudo dnf upgrade -y
-    sudo dnf install -y docker
-    sudo systemctl enable --now docker
-    sudo usermod -aG docker $USER
-    echo "Setup concluído!" > /home/ec2-user/setup_done.txt
-  EOF
+    yum update -y
+    amazon-linux-extras install docker -y
+    systemctl start docker
+    systemctl enable docker
+    
+    docker run -d --name meu-nginx -p 80:80 nginx 
+    EOF
 
   tags = {
     Name = "Ec2-Docker-learning-fedora"
