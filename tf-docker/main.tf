@@ -171,12 +171,18 @@ resource "aws_instance" "ec2_docker_learning" {
 
   user_data = <<-EOF
     #!/bin/bash
-    yum update -y
-    amazon-linux-extras install docker -y
+    dnf update -y
+    dnf install docker -y
     systemctl start docker
     systemctl enable docker
-    
-    docker run -d --name meu-nginx -p 80:80 nginx 
+    usermod -aG docker ec2-user
+    sleep 10
+    echo "net.ipv4.ip_forward=1" | sudo tee -a /etc/sysctl.conf
+    sudo sysctl -p
+    sudo iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
+    docker run -d --name meu-nginx -p 80:80 nginx
+    docker ps > /tmp/docker-ps.log
+    ss -tunlp > /tmp/ports.log
     EOF
 
   tags = {
