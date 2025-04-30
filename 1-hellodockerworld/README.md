@@ -27,5 +27,8 @@ hello-docker/
 docker build -t hello-docker .
 
 # Rodar o container
-docker run hello-docker
+docker run hello-docker:latest
 ````
+
+### 💬 Saída esperada:
+🚀 Hello from inside a Docker container!
