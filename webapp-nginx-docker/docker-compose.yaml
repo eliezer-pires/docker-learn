@@ -1,0 +1,16 @@
+name: web_Eliezer
+services:
+  proxy:
+    build:
+      context: ./proxy
+      dockerfile: Dockerfile
+    ports:
+      - "8080:80"
+    volumes:
+      - ./proxy/html/web-app:/usr/share/nginx/html:ro
+    networks:
+      - app-net
+
+networks:
+  app-net:
+    driver: bridge

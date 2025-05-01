@@ -1,0 +1,20 @@
+services:
+  webapp:
+    image: nginx:alpine
+    ports:
+      - "8080:80" # Mapeia porta 8080 do host para a 80 do container
+    volumes:
+      - ./html:/usr/share/nginx/html:ro # Monta diretório local como read-only
+    networks:
+      - app-net
+  
+  redis:
+    image: redis:alpine
+    networks:
+      - app-net
+  
+networks:
+  app-net: # Define uma rede customizada
+    driver: bridge
+
+volumes: {} # Seção de volumes (vazia neste exemplo)
