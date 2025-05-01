@@ -1,83 +1,76 @@
-# 🚀 WebApp Estático com Docker + NGINX
+# 🐳 docker-learn
 
-Este projeto serve uma aplicação **HTML/CSS estática** usando **NGINX containerizado com Docker**, simulando um ambiente real de produção leve, com boas práticas de DevOps.
-
----
-
-## 📁 Estrutura do Projeto
-
-webapp-nginx-docker/
-├── docker-compose.yaml
-└── proxy/
- ├── Dockerfile
- ├── nginx.conf
- └── html/
-  └── web-app/
-  ├── index.html
-  ├── style.css
-  └── assets/
-   └── bird_2.jpg
-
-   
----
-
-## 🛠️ Tecnologias Utilizadas
-
-- [Docker](https://www.docker.com/)
-- [NGINX](https://nginx.org/)
-- HTML5 / CSS3
+Repositório com **projetos práticos de aprendizado Docker** criados durante meus estudos.  
+Este é meu laboratório pessoal para testar, errar, aprender e documentar boas práticas com containers e infraestrutura como código. 💡
 
 ---
 
-## ⚙️ Pré-requisitos
+## 📑 Índice dos Projetos
 
-- Docker instalado e funcionando (`docker -v`)
-- Docker Compose instalado (`docker compose version`)
+| Projeto | Descrição | Status |
+|--------|-----------|--------|
+| [1-hellodockerworld](#1-hellodockerworld) | Primeiro app "Hello Docker World" com imagem simples | ✔️ Finalizado |
+| [bookdescomplicando](#bookdescomplicando) | Estudos baseados no livro *Docker Descomplicado* | ⚙️ Em progresso |
+| [giruslab-docker-compose](#giruslab-docker-compose) | Experimentos com múltiplos containers e rede | ✔️ Finalizado |
+| [Nana](#nana) | Testes de imagens, volumes e redes isoladas | ⚙️ Em progresso |
+| [projects/hello-docker](#projectshello-docker) | App com Dockerfile e estrutura modular | ✔️ Finalizado |
+| [tf-docker](#tf-docker) | Docker + Terraform integrando infraestrutura | 🧪 Experimental |
+| [webapp-nginx-docker](#webapp-nginx-docker) | App estático HTML/CSS servido com NGINX em container | ✔️ Finalizado |
 
 ---
 
-## ▶️ Como rodar o projeto
+## 📂 Detalhes dos Projetos
 
-1. Clone o repositório:
-   ```bash
-   git clone https://github.com/seu-usuario/webapp-nginx-docker.git
-   cd webapp-nginx-docker
-   ```
-2. Build da imagem:
-   ```bash
-    docker compose build
-   ```
-3. Subir o container:
-   ```bash
-   docker compose up -d
-   ```
-4. Acesse o projeto em:
-   
-   http://localhost:8080
-   
-## 🧪 Testes e Debug
+### 🐳 1-hellodockerworld
+> Primeiro contato com Docker: app simples em Python com Dockerfile e build manual.
 
-- Logs do container:
-    ````bash
-    docker compose logs -f proxy
-    ````
-- Parar o projeto:
-    ````bash
-    docker compose down
-    ````
+---
 
-## 📦 Explicação Técnica
+### 📚 bookdescomplicando
+> Repositório dedicado aos exercícios propostos no livro **Docker Descomplicado**, com aplicações práticas de rede, volumes e imagens.
 
-- Os arquivos estáticos são servidos diretamente do diretório:
-```bash
-proxy/html/web-app → /usr/share/nginx/html (via bind mount)
-```
-- O NGINX é configurado com nginx.conf customizado para tratar corretamente caminhos e arquivos faltantes.
+---
 
-## 🧠 Conceitos abordados
+### 🧪 giruslab-docker-compose
+> Uso de `docker-compose` para subir múltiplos serviços, simulação de ambientes complexos (ex: front + API + DB).
 
-- Docker básico (Dockerfile, build, run)
-- Docker Compose
-- Bind Mounts (:ro)
-- Servidor NGINX customizado
-- Boas práticas de estruturação e segurança
+---
+
+### 🔧 Nana
+> Testes manuais de comportamento de containers, rede bridge, e scripts de inicialização.
+
+---
+
+### 📁 projects/hello-docker
+> Projeto simples, organizado com subpastas e aplicação empacotada com imagem customizada. Explora o uso de `docker build` e `docker run`.
+
+---
+
+### 🌍 tf-docker
+> Integração de Docker com Terraform para provisionamento de ambientes como código (IaC). Ensaio prático de DevOps moderno.
+
+---
+
+### 🌐 webapp-nginx-docker
+> Web App estático HTML/CSS servido com NGINX customizado. Boas práticas com bind mount, `nginx.conf`, volumes e `docker-compose`.
+
+---
+
+## 💼 Autor
+
+**Eliezer Pires**  
+
+[LinkedIn](https://www.linkedin.com/in/eliezer-pires-sre-devops-aws)
+
+---
+
+## 📌 Status
+
+📘 Projeto pessoal de aprendizado contínuo.  
+Sempre que estudo algo novo sobre Docker, adiciono um projeto novo aqui.
+
+---
+
+## ⭐ Contribuições
+
+Se tiver sugestões ou quiser aprender junto, sinta-se à vontade para abrir uma **issue** ou **pull request** 🚀
