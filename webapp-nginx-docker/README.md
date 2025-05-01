@@ -5,19 +5,19 @@ Este projeto serve uma aplicação **HTML/CSS estática** usando **NGINX contain
 ---
 
 ## 📁 Estrutura do Projeto
-
+````bash
 webapp-nginx-docker/
 ├── docker-compose.yaml
 └── proxy/
- ├── Dockerfile
- ├── nginx.conf
- └── html/
-  └── web-app/
-  ├── index.html
-  ├── style.css
-  └── assets/
-   └── bird_2.jpg
-
+   ├── Dockerfile
+   ├── nginx.conf
+   └── html/
+      └── web-app/
+      ├── index.html
+      ├── style.css
+      └── assets/
+         └── bird_2.jpg
+````
    
 ---
 
