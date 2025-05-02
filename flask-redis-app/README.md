@@ -35,7 +35,7 @@ A aplicação é uma **API simples** com duas rotas:
 ---
 
 ## 📁 Estrutura de Pastas
-
+````bash
 flask-redis-app/
 ├── app/
 │   ├── app.py
@@ -44,7 +44,7 @@ flask-redis-app/
 ├── Dockerfile
 ├── .dockerignore
 └── README.md
-
+````
 
 ---
 
