@@ -13,7 +13,7 @@ A aplicação é uma **API simples** com duas rotas:
 ---
 
 ## 🧠 Arquitetura e Comunicação entre Containers
-
+````bash
 ┌───────────────┐       HTTP       ┌─────────────┐
 │ Navegador     │ ───────────────▶ │ Flask (app) │
 └───────────────┘                  │   Container │
@@ -27,7 +27,7 @@ A aplicação é uma **API simples** com duas rotas:
                                   └────┬────────┘
                                        │
                                  Volume: redis_data
-
+````
 
 - O container Flask acessa Redis via hostname `redis` (resolvido pela rede Docker)
 - Redis persiste os dados no volume `redis_data`
