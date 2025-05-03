@@ -1,0 +1,23 @@
+# Arquivos de ambiente
+.env
+
+# Volumes Docker
+pg_data/
+
+# PyCharm, VSCode etc
+.idea/
+.vscode/
+
+# Logs
+*.log
+
+# arquivos temporários / SO
+.DS_Store
+Thumbs.db
+
+# Node/npm (caso use em algum projeto)
+node_modules/
+
+# Python cache
+__pycache__/
+*.pyc
