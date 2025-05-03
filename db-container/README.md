@@ -22,7 +22,7 @@ db-container-project/
 ├── README.md
 ├── .env # Variáveis de Ambiente Sensíveis
 ├── init
-└── init.sql # Script SQL para criar tabelas/dados
+    └── init.sql # Script SQL para criar tabelas/dados
 └── pg_data/ # Volume Docker (criado automaticamente)
 ````
 
