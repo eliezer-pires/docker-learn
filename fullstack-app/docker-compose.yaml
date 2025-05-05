@@ -1,0 +1,62 @@
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    depends_on:
+      - postgres
+    env_file:
+      - .env
+    ports:
+      - "5000:5000"
+    networks:
+      - fullstack-net
+    restart: unless-stopped
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+      args:
+        - VITE_API_URL= http://backend:5000
+    ports:
+      - "3000:80" # mapeia a porta do host (3000) para a porta do container (80)
+    depends_on:
+      - backend
+    networks:
+      - fullstack-net
+    restart: unless-stopped
+  postgres:
+    image: 'bitnami/postgresql:14.17.0-debian-12-r17'
+    environment:
+      POSTGRESQL_USERNAME: ${POSTGRES_USER}
+      POSTGRESQL_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRESQL_DATABASE: ${POSTGRES_DB}
+      POSTGRESQL_INITSCRIPTS_DIR: /docker-entrypoint-initdb.d
+    volumes:
+      - pg_data:/bitnami/postgresql
+      - ./init:/docker-entrypoint-initdb.d
+    ports:
+      - "5432:5432"
+    networks:
+      - fullstack-net
+    restart: unless-stopped
+  
+  pgadmin4:
+    image: 'elestio/pgadmin:REL-9_3'
+    environment:
+      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL}
+      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD}
+      PGADMIN_LISTEN_PORT: 8080
+    ports:
+      - "8080:8080"
+    depends_on:
+      - postgres
+    networks:
+      - fullstack-net
+    restart: unless-stopped
+volumes:
+  pg_data:
+
+networks:
+  fullstack-net:
+    driver: bridge
