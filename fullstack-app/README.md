@@ -1,0 +1,1 @@
+# O projeto roda, mas estou com problemas no Frontend para resolver.
