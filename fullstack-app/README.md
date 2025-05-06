@@ -23,37 +23,6 @@ Este projeto demonstra a criação de uma aplicação full stack utilizando cont
 
 ## 📁 Estrutura de Pastas
 
-O ChatGPT disse:
-Perfeito! Aqui está um README.md completo e bem estruturado para o seu projeto, com foco pedagógico em DevOps com Docker e integração full stack 👇
-
-markdown
-Copiar
-Editar
-# 🚀 Projeto Full Stack com Docker: React + Flask + PostgreSQL
-
-Este projeto demonstra a criação de uma aplicação full stack utilizando containers Docker com **React no frontend**, **Flask (Python) no backend**, e **PostgreSQL como banco de dados**, com foco em práticas de **DevOps**, **Docker networking**, e **ambientes multi-container**.
-
----
-
-## 📚 Objetivos de Aprendizado
-
-### 🔧 DevOps & Docker
-- Utilização de **Docker Compose** para orquestrar múltiplos serviços (frontend, backend, banco de dados)
-- Conceitos de **rede de containers** e comunicação entre serviços via `service_name`
-- **Build automatizado** usando `volumes` e `bind mounts` para facilitar o desenvolvimento
-- **Rebuild eficiente** com `Dockerfile` otimizado e camadas reutilizáveis
-- Separação de responsabilidades por container, promovendo escalabilidade e manutenção simplificada
-
-### 💻 Integração Full Stack
-- Frontend moderno com **React** consumindo uma API REST
-- Backend com **Flask** servindo dados e realizando comunicação com o banco
-- Banco de dados **PostgreSQL** persistente via volume nomeado
-- Comunicação integrada entre camadas por meio de chamadas HTTP e conexão a banco relacional
-
----
-
-## 📁 Estrutura de Pastas
-
 ````bash
 ├── backend/
 │ ├── app
