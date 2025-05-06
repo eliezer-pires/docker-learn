@@ -17,7 +17,7 @@ services:
       context: ./frontend
       dockerfile: Dockerfile
       args:
-        - VITE_API_URL= http://backend:5000
+        - VITE_API_URL= http://localhost:5000
     ports:
       - "3000:80" # mapeia a porta do host (3000) para a porta do container (80)
     depends_on:
