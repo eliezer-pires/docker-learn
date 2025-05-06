@@ -78,8 +78,10 @@ Esses serviços se comunicam por **nomes de container**, como `backend` e `postg
 ## ▶️ Executando o Projeto
 
 ```bash
+# Buildando as imagens
+docker compose build
 # Inicializar todos os serviços
-docker-compose up --build
+docker compose up -d
 ```
 ## Acesso:
 
@@ -202,3 +204,9 @@ Este projeto visa consolidar o entendimento de:
 - Criação de ambientes isolados e consistentes com Docker
 - Automatização de builds e ambientes de desenvolvimento
 - Princípios fundamentais de DevOps aplicados em escala reduzida
+
+## 💼 Autor
+
+**Eliezer Pires**  
+
+[LinkedIn](https://www.linkedin.com/in/eliezer-pires-sre-devops-aws)
